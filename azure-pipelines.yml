@@ -19,3 +19,10 @@ steps:
     npm install
     npm run build
   displayName: 'npm install and build'
+
+  - task: AzureRmWebAppDeployment@4
+    inputs:
+      ConnectionType: 'PublishProfile'
+      PublishProfilePath: '$(System.DefaultWorkingDirectory)/**/*.pubxml'
+      PublishProfilePassword: 'Password01'
+      packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
